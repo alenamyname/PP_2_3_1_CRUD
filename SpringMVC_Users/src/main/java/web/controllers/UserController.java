@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import web.models.User;
+import web.services.UserService;
 import web.services.UserServiceImp;
 
 import javax.validation.Valid;
@@ -20,7 +21,7 @@ import javax.validation.Valid;
 
 public class UserController {
 
-    private final UserServiceImp userServiceImp;
+    private final UserService userServiceImp;
 
     public UserController(UserServiceImp userRepository) {
         this.userServiceImp = userRepository;
