@@ -69,9 +69,8 @@ public class SpringConfig implements WebMvcConfigurer {
     }
 
     @Bean
-    public DataSource dataSource() { // описываем базу данных
+    public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        //индефикация авторизация базы данных
         dataSource.setDriverClassName(env.getRequiredProperty("hibernate.connection.driver_class"));
         dataSource.setUrl(env.getRequiredProperty("hibernate.connection.url"));
         dataSource.setUsername(env.getRequiredProperty("hibernate.connection.username"));

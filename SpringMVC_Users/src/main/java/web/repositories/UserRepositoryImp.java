@@ -2,7 +2,6 @@ package web.repositories;
 
 
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 import web.models.User;
 
 import javax.persistence.EntityManager;

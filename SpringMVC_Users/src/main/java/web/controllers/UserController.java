@@ -1,9 +1,15 @@
 package web.controllers;
 
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import web.models.User;
 import web.services.UserServiceImp;
 
@@ -43,14 +49,14 @@ public class UserController {
     public String creat(@ModelAttribute("user")
                         @Valid User person, //
                         BindingResult bindingResult) {
-        if (bindingResult.hasErrors())
+        if (bindingResult.hasErrors()) {
             return "users/new";
+        }
         userServiceImp.save(person);
         return "redirect:/";
     }
 
     @GetMapping("/{id}/edit")
-
     public String edit(Model model, @PathVariable("id") int id) {
         model.addAttribute("user", userServiceImp.show(id));
         return "users/edit";
@@ -61,8 +67,9 @@ public class UserController {
                          @Valid User user, BindingResult bindingResult,
                          @PathVariable("id") int id) {
 
-        if (bindingResult.hasErrors())
+        if (bindingResult.hasErrors()) {
             return "users/edit";
+        }
         userServiceImp.update(id, user);  // обновляем человека в базе даных который пришел на вход
         return "redirect:/";
     }
